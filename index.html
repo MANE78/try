@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>موقع بسيط مع أيقونة</title>
+    
+    <!-- أيقونة الموقع -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌐</text></svg>">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            width: 100%;
+            max-width: 800px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        main {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            padding: 30px;
+            width: 100%;
+            max-width: 800px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+        
+        .content {
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .feature {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .feature:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        
+        footer {
+            margin-top: 30px;
+            text-align: center;
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+        
+        /* تصميم قسم الإعلان */
+        .ad-container {
+            margin: 40px 0;
+            text-align: center;
+        }
+        
+        .ad-wrapper {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            padding: 20px;
+            border: 2px dashed rgba(255, 255, 255, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .ad-label {
+            position: absolute;
+            top: -10px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            color: #6a11cb;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        
+        .ad-space {
+            width: 300px;
+            height: 250px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .ad-placeholder {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 1rem;
+            text-align: center;
+        }
+        
+        /* تصميم قسم GitHub */
+        .github-section {
+            margin: 40px 0;
+            text-align: center;
+        }
+        
+        .github-login {
+            background: #24292e;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+        
+        .github-login:hover {
+            background: #1a1e22;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .github-icon {
+            width: 24px;
+            height: 24px;
+        }
+        
+        .user-info {
+            margin-top: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 15px;
+            display: none;
+        }
+        
+        .user-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .user-name {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .user-bio {
+            opacity: 0.8;
+            margin-bottom: 15px;
+        }
+        
+        .logout-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 8px 20px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .logout-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .features {
+                grid-template-columns: 1fr;
+            }
+            
+            .ad-wrapper {
+                transform: scale(0.9);
+            }
+        }
+    </style>
+    
+    <!-- السكربت الجديد للإعلان في الرأس -->
+    <script type="text/javascript" data-cfasync="false">
+    /*<![CDATA[/* */
+    (function(){var e=window,n="cf8854657b752f1007c16ca1c7516656",x=[["siteId",902-909-604+712+5230960],["minBid",0],["popundersPerIP","0"],["delayBetween",0],["default",false],["defaultPerDay",0],["topmostLayer","auto"]],o=["d3d3LnByZW1pdW12ZXJ0aXNpbmcuY29tL3BkeW5hbWljcy5taW4uY3Nz","ZDJqMDQyY2oxNDIxd2kuY2xvdWRmcm9udC5uZXQvRnpXV25GL2Njcm9jb2RvYy52aWV3ZXIubWluLmpz"],c=-1,h,l,p=function(){clearTimeout(l);c++;if(o[c]&&!(1781989220000<(new Date).getTime()&&1<c)){h=e.document.createElement("script");h.type="text/javascript";h.async=!0;var f=e.document.getElementsByTagName("script")[0];h.src="https://"+atob(o[c]);h.crossOrigin="anonymous";h.onerror=p;h.onload=function(){clearTimeout(l);e[n.slice(0,16)+n.slice(0,16)]||p()};l=setTimeout(p,5E3);f.parentNode.insertBefore(h,f)}};if(!e[n]){try{Object.freeze(e[n]=x)}catch(e){}p()}})();
+    /*]]>/* */
+    </script>
+</head>
+<body>
+    <header>
+        <h1>مرحباً بك في موقعنا</h1>
+        <p class="subtitle">موقع بسيط وأنيق مع أيقونة مميزة</p>
+    </header>
+    
+    <main>
+        <div class="content">
+            <p>هذا مثال بسيط لموقع ويب يحتوي على أيقونة تظهر في شريط المتصفح. تم تصميم الموقع باستخدام HTML و CSS فقط ليكون خفيفاً وسريعاً.</p>
+            
+            <div class="features">
+                <div class="feature">
+                    <div class="feature-icon">🚀</div>
+                    <h3>سريع</h3>
+                    <p>تحميل سريع بدون اعتماديات خارجية</p>
+                </div>
+                
+                <div class="feature">
+                    <div class="feature-icon">📱</div>
+                    <h3>متجاوب</h3>
+                    <p>يعمل بشكل مثالي على جميع الأجهزة</p>
+                </div>
+                
+                <div class="feature">
+                    <div class="feature-icon">🎨</div>
+                    <h3>أنيق</h3>
+                    <p>تصميم عصري مع تأثيرات بصرية جذابة</p>
+                </div>
+            </div>
+            
+            <!-- قسم GitHub -->
+            <div class="github-section">
+                <h2 style="margin-bottom: 20px;">تسجيل الدخول باستخدام GitHub</h2>
+                
+                <!-- زر تسجيل الدخول -->
+                <a href="#" class="github-login" id="github-login">
+                    <svg class="github-icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                    تسجيل الدخول بـ GitHub
+                </a>
+                
+                <!-- معلومات المستخدم -->
+                <div class="user-info" id="user-info">
+                    <img class="user-avatar" id="user-avatar" src="" alt="User Avatar">
+                    <div class="user-name" id="user-name"></div>
+                    <div class="user-bio" id="user-bio"></div>
+                    <button class="logout-btn" id="logout-btn">تسجيل الخروج</button>
+                </div>
+            </div>
+            
+            <!-- قسم الإعلان -->
+            <div class="ad-container">
+                <div class="ad-wrapper">
+                    <div class="ad-label">إعلان</div>
+                    <div class="ad-space" id="ad-space">
+                        <div class="ad-placeholder">
+                            <p>مساحة إعلانية</p>
+                            <p>300×250 بكسل</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <p>الأيقونة المستخدمة هي رمز الكرة الأرضية 🌐 الذي يمثل الويب العالمي. يمكنك استبدالها بأي أيقونة أخرى تفضلها عن طريق تغيير الرمز في كود SVG داخل وسم الـ link.</p>
+        </div>
+    </main>
+    
+    <footer>
+        <p>© 2023 موقع بسيط - جميع الحقوق محفوظة</p>
+    </footer>
+
+    <!-- السكربت الجديد للإعلان في نهاية الصفحة -->
+    <script type="text/javascript" data-cfasync="false">
+    /*<![CDATA[/* */
+    (function(){var e=window,n="cf8854657b752f1007c16ca1c7516656",x=[["siteId",902-909-604+712+5230960],["minBid",0],["popundersPerIP","0"],["delayBetween",0],["default",false],["defaultPerDay",0],["topmostLayer","auto"]],o=["d3d3LnByZW1pdW12ZXJ0aXNpbmcuY29tL3BkeW5hbWljcy5taW4uY3Nz","ZDJqMDQyY2oxNDIxd2kuY2xvdWRmcm9udC5uZXQvRnpXV25GL2Njcm9jb2RvYy52aWV3ZXIubWluLmpz"],c=-1,h,l,p=function(){clearTimeout(l);c++;if(o[c]&&!(1781989220000<(new Date).getTime()&&1<c)){h=e.document.createElement("script");h.type="text/javascript";h.async=!0;var f=e.document.getElementsByTagName("script")[0];h.src="https://"+atob(o[c]);h.crossOrigin="anonymous";h.onerror=p;h.onload=function(){clearTimeout(l);e[n.slice(0,16)+n.slice(0,16)]||p()};l=setTimeout(p,5E3);f.parentNode.insertBefore(h,f)}};if(!e[n]){try{Object.freeze(e[n]=x)}catch(e){}p()}})();
+    /*]]>/* */
+    </script>
+    
+    <script>
+        // إضافة الإعلان إلى المساحة المخصصة
+        document.addEventListener('DOMContentLoaded', function() {
+            const adSpace = document.getElementById('ad-space');
+            
+            // GitHub OAuth functionality
+            const githubLogin = document.getElementById('github-login');
+            const userInfo = document.getElementById('user-info');
+            const userAvatar = document.getElementById('user-avatar');
+            const userName = document.getElementById('user-name');
+            const userBio = document.getElementById('user-bio');
+            const logoutBtn = document.getElementById('logout-btn');
+            
+            // Client ID - يجب استبداله بـ Client ID الخاص بك
+            const CLIENT_ID = 'YOUR_CLIENT_ID_HERE';
+            const REDIRECT_URI = 'YOUR_REDIRECT_URI_HERE';
+            
+            // التحقق من وجود رمز الوصول في URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const accessToken = urlParams.get('access_token');
+            
+            if (accessToken) {
+                // جلب معلومات المستخدم
+                fetchUserInfo(accessToken);
+            } else {
+                // عرض زر تسجيل الدخول
+                githubLogin.style.display = 'inline-flex';
+                userInfo.style.display = 'none';
+            }
+            
+            // معالجة تسجيل الدخول
+            githubLogin.addEventListener('click', function(e) {
+                e.preventDefault();
+                const authUrl = `https://github.com/login/oauth/authorize?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&scope=user:email`;
+                window.location.href = authUrl;
+            });
+            
+            // معالجة تسجيل الخروج
+            logoutBtn.addEventListener('click', function() {
+                localStorage.removeItem('github_token');
+                localStorage.removeItem('github_user');
+                githubLogin.style.display = 'inline-flex';
+                userInfo.style.display = 'none';
+                // إزالة رمز الوصول من URL
+                window.history.pushState({}, document.title, window.location.pathname);
+            });
+            
+            // دالة لجلب معلومات المستخدم
+            async function fetchUserInfo(token) {
+                try {
+                    const response = await fetch('https://api.github.com/user', {
+                        headers: {
+                            'Authorization': `token ${token}`
+                        }
+                    });
+                    
+                    if (response.ok) {
+                        const userData = await response.json();
+                        displayUserInfo(userData);
+                        localStorage.setItem('github_token', token);
+                        localStorage.setItem('github_user', JSON.stringify(userData));
+                    }
+                } catch (error) {
+                    console.error('Error fetching user info:', error);
+                }
+            }
+            
+            // دالة لعرض معلومات المستخدم
+            function displayUserInfo(userData) {
+                userAvatar.src = userData.avatar_url;
+                userName.textContent = userData.name || userData.login;
+                userBio.textContent = userData.bio || 'لا يوجد سيرة ذاتية';
+                
+                githubLogin.style.display = 'none';
+                userInfo.style.display = 'block';
+            }
+            
+            // التحقق من وجود بيانات محفوظة
+            const savedToken = localStorage.getItem('github_token');
+            const savedUser = localStorage.getItem('github_user');
+            
+            if (savedToken && savedUser) {
+                const userData = JSON.parse(savedUser);
+                displayUserInfo(userData);
+            }
+            
+            // إضافة كود إضافي لتفعيل الإعلانات
+            console.log('تم تحميل صفحة الإعلانات');
+            
+            // محاولة تحميل الإعلان يدوياً بعد 3 ثواني
+            setTimeout(function() {
+                if (typeof window.cf8854657b752f1007c16ca1c7516656 !== 'undefined') {
+                    console.log('تم العثور على كود الإعلان');
+                } else {
+                    console.log('لم يتم العثور على كود الإعلان');
+                }
+            }, 3000);
+            
+            // إضافة مستمع للأحداث لتفعيل الإعلان عند النقر على الصفحة
+            document.addEventListener('click', function() {
+                console.log('تم النقر على الصفحة - قد يتم تفعيل الإعلان');
+            }, { once: true });
+        });
+    </script>
+</body>
+</html>
