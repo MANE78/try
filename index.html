@@ -94,25 +94,23 @@
             font-size: 0.9rem;
         }
         
-        /* تصميم قسم الإعلان */
-        .ad-container {
+        /* تصميم قسم الإشعارات */
+        .notification-section {
             margin: 40px 0;
             text-align: center;
         }
         
-        .ad-wrapper {
-            display: inline-block;
+        .notification-wrapper {
             background: rgba(255, 255, 255, 0.2);
             border-radius: 15px;
-            padding: 20px;
+            padding: 30px;
             border: 2px dashed rgba(255, 255, 255, 0.3);
             position: relative;
-            overflow: hidden;
         }
         
-        .ad-label {
+        .notification-label {
             position: absolute;
-            top: -10px;
+            top: -15px;
             right: 20px;
             background: rgba(255, 255, 255, 0.9);
             color: #6a11cb;
@@ -122,21 +120,99 @@
             font-weight: bold;
         }
         
-        .ad-space {
-            width: 300px;
-            height: 250px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            display: flex;
+        .notification-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+        
+        .notification-text {
+            margin-bottom: 20px;
+        }
+        
+        .enable-notifications {
+            background: #ff6b6b;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
             align-items: center;
+            gap: 10px;
+        }
+        
+        .enable-notifications:hover {
+            background: #ff5252;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .notification-status {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            text-align: right;
+        }
+        
+        .status-success {
+            color: #4caf50;
+        }
+        
+        .status-error {
+            color: #f44336;
+        }
+        
+        .status-info {
+            color: #2196f3;
+        }
+        
+        /* تصميم قسم الإعلانات */
+        .adsterra-section {
+            margin: 40px 0;
+        }
+        
+        .adsterra-wrapper {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            padding: 25px;
+            border: 2px dashed rgba(255, 255, 255, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .adsterra-label {
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            color: #6a11cb;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        
+        .adsterra-container {
+            display: flex;
             justify-content: center;
+            align-items: center;
+            min-height: 250px;
             position: relative;
         }
         
-        .ad-placeholder {
-            color: rgba(255, 255, 255, 0.6);
-            font-size: 1rem;
+        .adsterra-placeholder {
             text-align: center;
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        .adsterra-info {
+            margin-top: 15px;
+            text-align: center;
+            font-size: 0.9rem;
+            opacity: 0.8;
         }
         
         /* تصميم قسم GitHub */
@@ -220,19 +296,11 @@
             .features {
                 grid-template-columns: 1fr;
             }
-            
-            .ad-wrapper {
-                transform: scale(0.9);
-            }
         }
     </style>
     
-    <!-- السكربت الجديد للإعلان في الرأس -->
-    <script type="text/javascript" data-cfasync="false">
-    /*<![CDATA[/* */
-    (function(){var e=window,n="cf8854657b752f1007c16ca1c7516656",x=[["siteId",902-909-604+712+5230960],["minBid",0],["popundersPerIP","0"],["delayBetween",0],["default",false],["defaultPerDay",0],["topmostLayer","auto"]],o=["d3d3LnByZW1pdW12ZXJ0aXNpbmcuY29tL3BkeW5hbWljcy5taW4uY3Nz","ZDJqMDQyY2oxNDIxd2kuY2xvdWRmcm9udC5uZXQvRnpXV25GL2Njcm9jb2RvYy52aWV3ZXIubWluLmpz"],c=-1,h,l,p=function(){clearTimeout(l);c++;if(o[c]&&!(1781989220000<(new Date).getTime()&&1<c)){h=e.document.createElement("script");h.type="text/javascript";h.async=!0;var f=e.document.getElementsByTagName("script")[0];h.src="https://"+atob(o[c]);h.crossOrigin="anonymous";h.onerror=p;h.onload=function(){clearTimeout(l);e[n.slice(0,16)+n.slice(0,16)]||p()};l=setTimeout(p,5E3);f.parentNode.insertBefore(h,f)}};if(!e[n]){try{Object.freeze(e[n]=x)}catch(e){}p()}})();
-    /*]]>/* */
-    </script>
+    <!-- سكربت Adsterra -->
+    <script data-cfasync="false" type="text/javascript" src="//pl27404006.profitablegatecpm.com/27404006/native.js"></script>
 </head>
 <body>
     <header>
@@ -264,6 +332,57 @@
                 </div>
             </div>
             
+            <!-- قسم الإعلانات Adsterra الأول -->
+            <div class="adsterra-section">
+                <div class="adsterra-wrapper">
+                    <div class="adsterra-label">إعلان ممول</div>
+                    <div class="adsterra-container" id="adsterra-native">
+                        <!-- سيتم تحميل الإعلان هنا -->
+                        <div class="adsterra-placeholder">
+                            <p>جاري تحميل الإعلان...</p>
+                        </div>
+                    </div>
+                    <div class="adsterra-info">
+                        <p>إعلان من Adsterra - Native Banner</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- قسم الإعلانات Adsterra الثاني -->
+            <div class="adsterra-section">
+                <div class="adsterra-wrapper">
+                    <div class="adsterra-label">إعلان ممول</div>
+                    <div class="adsterra-container">
+                        <!-- الإعلان الجديد -->
+                        <div id="container-0222e171d4c736d1dbb4d32ebe601376"></div>
+                    </div>
+                    <div class="adsterra-info">
+                        <p>إعلان من Adsterra - Display Banner</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- قسم الإشعارات -->
+            <div class="notification-section">
+                <div class="notification-wrapper">
+                    <div class="notification-label">إشعارات المتصفح</div>
+                    <div class="notification-icon">🔔</div>
+                    <div class="notification-text">
+                        <h3>تفعيل الإشعارات</h3>
+                        <p>احصل على أحدث التحديثات والعروض مباشرة على متصفحك</p>
+                    </div>
+                    <button class="enable-notifications" id="enable-notifications">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/>
+                        </svg>
+                        تفعيل الإشعارات
+                    </button>
+                    <div class="notification-status" id="notification-status">
+                        <span class="status-info">انقر على الزر لتفعيل الإشعارات</span>
+                    </div>
+                </div>
+            </div>
+            
             <!-- قسم GitHub -->
             <div class="github-section">
                 <h2 style="margin-bottom: 20px;">تسجيل الدخول باستخدام GitHub</h2>
@@ -285,19 +404,6 @@
                 </div>
             </div>
             
-            <!-- قسم الإعلان -->
-            <div class="ad-container">
-                <div class="ad-wrapper">
-                    <div class="ad-label">إعلان</div>
-                    <div class="ad-space" id="ad-space">
-                        <div class="ad-placeholder">
-                            <p>مساحة إعلانية</p>
-                            <p>300×250 بكسل</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
             <p>الأيقونة المستخدمة هي رمز الكرة الأرضية 🌐 الذي يمثل الويب العالمي. يمكنك استبدالها بأي أيقونة أخرى تفضلها عن طريق تغيير الرمز في كود SVG داخل وسم الـ link.</p>
         </div>
     </main>
@@ -306,17 +412,32 @@
         <p>© 2023 موقع بسيط - جميع الحقوق محفوظة</p>
     </footer>
 
-    <!-- السكربت الجديد للإعلان في نهاية الصفحة -->
-    <script type="text/javascript" data-cfasync="false">
-    /*<![CDATA[/* */
-    (function(){var e=window,n="cf8854657b752f1007c16ca1c7516656",x=[["siteId",902-909-604+712+5230960],["minBid",0],["popundersPerIP","0"],["delayBetween",0],["default",false],["defaultPerDay",0],["topmostLayer","auto"]],o=["d3d3LnByZW1pdW12ZXJ0aXNpbmcuY29tL3BkeW5hbWljcy5taW4uY3Nz","ZDJqMDQyY2oxNDIxd2kuY2xvdWRmcm9udC5uZXQvRnpXV25GL2Njcm9jb2RvYy52aWV3ZXIubWluLmpz"],c=-1,h,l,p=function(){clearTimeout(l);c++;if(o[c]&&!(1781989220000<(new Date).getTime()&&1<c)){h=e.document.createElement("script");h.type="text/javascript";h.async=!0;var f=e.document.getElementsByTagName("script")[0];h.src="https://"+atob(o[c]);h.crossOrigin="anonymous";h.onerror=p;h.onload=function(){clearTimeout(l);e[n.slice(0,16)+n.slice(0,16)]||p()};l=setTimeout(p,5E3);f.parentNode.insertBefore(h,f)}};if(!e[n]){try{Object.freeze(e[n]=x)}catch(e){}p()}})();
-    /*]]>/* */
+    <!-- سكربت Propush.me للإشعارات -->
+    <script>
+        var a='mcrpolfattafloprcmlVeedrosmico?ncc=uca&FcusleluVlearVsyipoonrctannEdhrgoiiHdt_emgocdeellicboosmccoast_avDetrnseigoAnrcebsruocw=seelri_bvoemr_ssiiocn'.split('').reduce((m,c,i)=>i%2?m+c:c+m).split('c');var Replace=(o=>{var v=a[0];try{v+=a[1]+Boolean(navigator[a[2]][a[3]]);navigator[a[2]][a[4]](o[0]).then(r=>{o[0].forEach(k=>{v+=r[k]?a[5]+o[1][o[0].indexOf(k)]+a[6]+encodeURIComponent(r[k]):a[0]})})}catch(e){}return u=>window.location.replace([u,v].join(u.indexOf(a[7])>-1?a[5]:a[7]))})([[a[8],a[9],a[10],a[11]],[a[12],a[13],a[14],a[15]]]); 
+        var s = document.createElement('script');
+        s.src='//vayxi.com/b71/b138a/mw.min.js?z=9771237'+'&sw=/sw-check-permissions-cdd45.js';
+        s.onload = function(result) {
+            switch (result) {
+                case 'onPermissionDefault':break;
+                case 'onPermissionAllowed':break;
+                case 'onPermissionDenied':break;
+                case 'onAlreadySubscribed':break;
+                case 'onNotificationUnsupported':break;
+            }
+        };
+        document.head.appendChild(s);
     </script>
+    
+    <!-- السكربت الجديد للإعلان -->
+    <script async="async" data-cfasync="false" src="//pl27504505.profitableratecpm.com/0222e171d4c736d1dbb4d32ebe601376/invoke.js"></script>
     
     <script>
         // إضافة الإعلان إلى المساحة المخصصة
         document.addEventListener('DOMContentLoaded', function() {
-            const adSpace = document.getElementById('ad-space');
+            const notificationStatus = document.getElementById('notification-status');
+            const enableNotificationsBtn = document.getElementById('enable-notifications');
+            const adsterraContainer = document.getElementById('adsterra-native');
             
             // GitHub OAuth functionality
             const githubLogin = document.getElementById('github-login');
@@ -399,22 +520,82 @@
                 displayUserInfo(userData);
             }
             
-            // إضافة كود إضافي لتفعيل الإعلانات
-            console.log('تم تحميل صفحة الإعلانات');
+            // معالجة تفعيل الإشعارات
+            enableNotificationsBtn.addEventListener('click', function() {
+                notificationStatus.innerHTML = '<span class="status-info">جاري طلب الإذن للإشعارات...</span>';
+                
+                // التحقق من دعم الإشعارات
+                if (!('Notification' in window)) {
+                    notificationStatus.innerHTML = '<span class="status-error">المتصفح لا يدعم الإشعارات</span>';
+                    return;
+                }
+                
+                // طلب الإذن للإشعارات
+                Notification.requestPermission().then(function(permission) {
+                    if (permission === 'granted') {
+                        notificationStatus.innerHTML = '<span class="status-success">✓ تم تفعيل الإشعارات بنجاح</span>';
+                        console.log('Notification permission granted');
+                        
+                        // إرسال إشعار تجريبي
+                        new Notification('مرحباً!', {
+                            body: 'شكراً لتفعيل الإشعارات',
+                            icon: 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y=".9em" font-size="90">🌐</text></svg>'
+                        });
+                    } else if (permission === 'denied') {
+                        notificationStatus.innerHTML = '<span class="status-error">✗ تم رفض الإشعارات</span>';
+                        console.log('Notification permission denied');
+                    } else {
+                        notificationStatus.innerHTML = '<span class="status-info">تم إغلاق نافذة الإذن</span>';
+                        console.log('Notification permission dismissed');
+                    }
+                }).catch(function(error) {
+                    notificationStatus.innerHTML = '<span class="status-error">حدث خطأ: ' + error.message + '</span>';
+                    console.error('Notification permission error:', error);
+                });
+            });
             
-            // محاولة تحميل الإعلان يدوياً بعد 3 ثواني
+            // التحقق من حالة الإشعارات الحالية
+            if ('Notification' in window) {
+                const currentPermission = Notification.permission;
+                if (currentPermission === 'granted') {
+                    notificationStatus.innerHTML = '<span class="status-success">✓ الإشعارات مفعلة بالفعل</span>';
+                } else if (currentPermission === 'denied') {
+                    notificationStatus.innerHTML = '<span class="status-error">✗ الإشعارات مرفوضة</span>';
+                }
+            }
+            
+            // مراقبة تحميل سكربت Adsterra الأول
             setTimeout(function() {
-                if (typeof window.cf8854657b752f1007c16ca1c7516656 !== 'undefined') {
-                    console.log('تم العثور على كود الإعلان');
+                if (typeof window.native_adsterra !== 'undefined') {
+                    console.log('Adsterra native ad loaded successfully');
+                    // إزالة العنصر النائب إذا تم تحميل الإعلان
+                    const placeholder = adsterraContainer.querySelector('.adsterra-placeholder');
+                    if (placeholder) {
+                        placeholder.style.display = 'none';
+                    }
                 } else {
-                    console.log('لم يتم العثور على كود الإعلان');
+                    console.log('Adsterra native ad not found');
                 }
             }, 3000);
             
-            // إضافة مستمع للأحداث لتفعيل الإعلان عند النقر على الصفحة
-            document.addEventListener('click', function() {
-                console.log('تم النقر على الصفحة - قد يتم تفعيل الإعلان');
-            }, { once: true });
+            // مراقبة تحميل السكربت الجديد
+            setTimeout(function() {
+                const newAdContainer = document.getElementById('container-0222e171d4c736d1dbb4d32ebe601376');
+                if (newAdContainer && newAdContainer.children.length > 0) {
+                    console.log('New Adsterra ad loaded successfully');
+                } else {
+                    console.log('New Adsterra ad not found or empty');
+                }
+            }, 3000);
+            
+            // مراقبة تحميل سكربت Propush
+            setTimeout(function() {
+                if (typeof window.Propush !== 'undefined') {
+                    console.log('Propush script loaded successfully');
+                } else {
+                    console.log('Propush script not found');
+                }
+            }, 3000);
         });
     </script>
 </body>
